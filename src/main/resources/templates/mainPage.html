@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${computers} and ${computers.size()}" >Currently no user made computers in our store.</p>
+
+<table class="table-view">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Case</th>
+        <th>Cpu</th>
+        <th>Hdd</th>
+        <th>Monitor</th>
+        <th>MotherBoard</th>
+        <th>PowerBlock</th>
+        <th>Ram</th>
+        <th>Vga</th>
+    </tr>
+    <tr th:each="computer : ${computers}">
+        <td th:text="${computer.name}"></td>
+        <td th:text="${computer.computerType.name}"></td>
+        <td th:text="${computer.computerCase.name}"></td>
+        <td th:text="${computer.cpu.name}"></td>
+        <td th:text="${computer.hdd.name}"></td>
+        <td th:text="${computer.monitor.name}"></td>
+        <td th:text="${computer.motherBoard.name}"></td>
+        <td th:text="${computer.powerBlock.name}"></td>
+        <td th:text="${computer.ram.name}"></td>
+        <td th:text="${computer.vga.name}"></td>
+    </tr>
+</table>
+<br/>
+<a href="/addParts">Administrators page</a>
+
+</body>
+</html>

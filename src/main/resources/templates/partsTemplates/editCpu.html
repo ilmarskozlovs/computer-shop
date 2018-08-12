@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<form name="editCpu" action="/parts/editCpu" method="post" th:object="${cpu}">
+    <p>Id</p>
+    <input title="Id" type="text" name="id" th:value="*{id}">
+    <p>Name</p>
+    <input title="Name" type="text" name="name" th:value="*{name}">
+    <p>Description</p>
+    <input title="Description" type="text" name="description" th:value="*{description}">
+    <p>Price</p>
+    <input title="Price" type="text" name="price" th:value="*{price}">
+
+    <input type="submit" value="Edit">
+</form>
+
+</body>
+</html>

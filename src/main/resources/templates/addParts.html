@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h3>This tab should be available only to users who have administrator role</h3>
+
+<h5>Part type to add to database:</h5>
+
+<a href="/parts/computerCases">Computer case</a>
+<br/>
+<a href="/parts/cpu">Central processing unit(CPU)</a>
+<br/>
+<a href="/parts/hdd">Hard disk drive(HDD)</a>
+<br/>
+<a href="/parts/monitors">Monitor</a>
+<br/>
+<a href="/parts/motherboards">Motherboard</a>
+<br/>
+<a href="/parts/powerblocks">Powerblock</a>
+<br/>
+<a href="/parts/ram">Random Access Memory(RAM)</a>
+<br/>
+<a href="/parts/vga">Video card(VGA)</a>
+
+
+</body>
+</html>

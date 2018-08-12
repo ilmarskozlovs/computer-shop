@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" th:object="${computer}" style="max-width: 300px ;">
+    <div class="form-select-button">
+        <label th:for="name">Computer name</label>
+        <input class="form-control" th:field="*{name}" />
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+
+    <div class="form-select-button">
+        <label th:for="type">Type</label>
+        <select name="computerTypeId">
+            <option th:each="type : ${computerTypes}"
+                    th:text="${type.name}"
+                    th:value="${type.id}"></option>
+        </select>
+    </div>
+
+    <div class="form-select-button">
+        <label th:for="case">Computer case</label>
+        <select name="computerCaseId">
+            <option th:each="case : ${computerCases}"
+                    th:text="${case.name}"
+                    th:value="${case.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="cpu">Cpu</label>
+        <select name="cpuId">
+            <option th:each="cpu : ${cpus}"
+                    th:text="${cpu.name}"
+                    th:value="${cpu.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="hdd">HDD</label>
+        <select name="hddId">
+            <option th:each="hdd : ${hdds}"
+                    th:text="${hdd.name}"
+                    th:value="${hdd.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="monitor">Monitor</label>
+        <select name="monitorId">
+            <option th:each="monitor : ${monitors}"
+                    th:text="${monitor.name}"
+                    th:value="${monitor.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="motherboards">Motherboard</label>
+        <select name="motherBoardId">
+            <option th:each="motherboard : ${motherboards}"
+                    th:text="${motherboard.name}"
+                    th:value="${motherboard.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="powerblock">Poweblock</label>
+        <select name="powerBlockId">
+            <option th:each="powerblock : ${powerblocks}"
+                    th:text="${powerblock.name}"
+                    th:value="${powerblock.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="ram">RAM</label>
+        <select name="ramId">
+            <option th:each="ram : ${rams}"
+                    th:text="${ram.name}"
+                    th:value="${ram.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="vga">VGA</label>
+        <select name="vgaId">
+            <option th:each="vga : ${vgas}"
+                    th:text="${vga.name}"
+                    th:value="${vga.id}"></option>
+        </select>
+    </div>
+
+    <input type="submit" value="Add computer to application!">
+</form>
+
+</body>
+</html>

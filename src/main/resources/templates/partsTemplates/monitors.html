@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<table class="table-view">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="monitor : ${monitors}">
+        <td th:text="${monitor.name}" ></td>
+        <td th:text="${monitor.description}" ></td>
+        <td th:text="${monitor.price}" ></td>
+        <td>
+            Info
+        </td>
+        <td>
+            <a href="/parts/editMonitor/" th:href="@{/parts/editMonitor/ __${monitor.id}__}">Edit</a>
+        </td>
+        <td>
+            <a href="/parts/removeMonitor/" th:href="@{/parts/removeMonitor/__${monitor.id}__}">Remove</a>
+        </td>
+    </tr>
+</table>
+
+<a href="/parts/addNewMonitor">Add new Monitor</a>
+
+<h5>What is monitor-</h5>
+<p>Monitor description //Will be available soon </p>
+
+<span>IMG 1</span>
+<span>IMG 1</span>
+<span>IMG 1</span>
+<span>IMG 1</span>
+
+</body>
+</html>

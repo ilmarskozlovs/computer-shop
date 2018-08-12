@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<form class="form-group" th:object="${computerCase}" method="post" action="/parts/addNewCase">
+    <input type="hidden" th:field="*{id}">
+    <label th:for="name">Name</label>
+    <input type="text" th:field="*{name}">
+    <label th:for="description">Description</label>
+    <input type="text" th:field="*{description}">
+    <label th:for="price">Price</label>
+    <input type="text" th:field="*{price}">
+    <input type="submit" value="Add computer case">
+
+</form>
+
+</body>
+</html>
