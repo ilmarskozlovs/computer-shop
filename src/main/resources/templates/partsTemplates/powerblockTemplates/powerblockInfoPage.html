@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Power</th>
+        <th>Diameter</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td th:text="${powerblock.id}"></td>
+        <td th:text="${powerblock.name}"></td>
+        <td th:text="${powerblock.price}"></td>
+        <td th:text="${powerblock.power}"></td>
+        <td th:text="${powerblock.diameter}"></td>
+        <td th:text="${powerblock.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

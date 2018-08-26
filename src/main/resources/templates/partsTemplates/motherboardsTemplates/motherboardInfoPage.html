@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Manufacturer</th>
+        <th>Main memory</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td th:text="${motherboard.id}"></td>
+        <td th:text="${motherboard.name}"></td>
+        <td th:text="${motherboard.price}"></td>
+        <td th:text="${motherboard.manufacturer.name}"></td>
+        <td th:text="${motherboard.mainMemory}"></td>
+        <td th:text="${motherboard.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

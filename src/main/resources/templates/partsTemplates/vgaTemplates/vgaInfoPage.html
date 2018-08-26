@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Manufacturer</th>
+        <th>Frequency</th>
+        <th>Memory size</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td th:text="${vga.id}"></td>
+        <td th:text="${vga.name}"></td>
+        <td th:text="${vga.price}"></td>
+        <td th:text="${vga.manufacturer.name}"></td>
+        <td th:text="${vga.frequency}"></td>
+        <td th:text="${vga.memorySize.size}"></td>
+        <td th:text="${vga.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

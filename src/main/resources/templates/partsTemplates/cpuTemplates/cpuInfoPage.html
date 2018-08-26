@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th>Turbo frequency</th>
+        <th>Number of cores</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td th:text="${cpu.id}"></td>
+        <td th:text="${cpu.name}"></td>
+        <td th:text="${cpu.manufacturer.name}"></td>
+        <td th:text="${cpu.price}"></td>
+        <td th:text="${cpu.frequency}"></td>
+        <td th:text="${cpu.numberOfCores}"></td>
+        <td th:text="${cpu.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

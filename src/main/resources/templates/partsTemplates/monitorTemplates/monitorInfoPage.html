@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Manufacturer</th>
+        <th>Type</th>
+        <th>Width</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td th:text="${monitor.id}"></td>
+        <td th:text="${monitor.name}"></td>
+        <td th:text="${monitor.price}"></td>
+        <td th:text="${monitor.manufacturer.name}"></td>
+        <td th:text="${monitor.monitorType.type}"></td>
+        <td th:text="${monitor.width}"></td>
+        <td th:text="${monitor.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

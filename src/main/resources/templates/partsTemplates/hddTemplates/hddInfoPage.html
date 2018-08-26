@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Storage capacity</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td th:text="${hdd.id}"></td>
+        <td th:text="${hdd.name}"></td>
+        <td th:text="${hdd.price}"></td>
+        <td th:text="${hdd.capacity}"></td>
+        <td th:text="${hdd.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
