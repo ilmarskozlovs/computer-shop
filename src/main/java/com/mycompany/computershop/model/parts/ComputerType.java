@@ -25,6 +25,12 @@ public class ComputerType {
     public ComputerType() {
     }
 
+    public ComputerType(String name, String description, int price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }

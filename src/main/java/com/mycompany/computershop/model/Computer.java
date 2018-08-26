@@ -1,6 +1,7 @@
 package com.mycompany.computershop.model;
 
 import com.mycompany.computershop.model.parts.*;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -16,13 +16,30 @@ public class Monitor {
 
     private String description;
 
-    private int price;
+    private double price;
+
+    @ManyToOne
+    private MonitorType monitorType;
+
+    @ManyToOne
+    private Manufacturer manufacturer;
+
+    private double width;
 
     @OneToMany
     @JoinColumn(name = "monitor_id")
     private List<Computer> computers;
 
     public Monitor() {
+    }
+
+    public Monitor(String name, String description, double price, MonitorType monitorType, Manufacturer manufacturer, double width) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.monitorType = monitorType;
+        this.manufacturer = manufacturer;
+        this.width = width;
     }
 
     public int getId() {
@@ -49,11 +66,11 @@ public class Monitor {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,5 +80,29 @@ public class Monitor {
 
     public void setComputers(List<Computer> computers) {
         this.computers = computers;
+    }
+
+    public MonitorType getMonitorType() {
+        return monitorType;
+    }
+
+    public void setMonitorType(MonitorType monitorType) {
+        this.monitorType = monitorType;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
     }
 }

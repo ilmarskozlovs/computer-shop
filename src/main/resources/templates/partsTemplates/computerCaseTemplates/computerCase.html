@@ -18,7 +18,7 @@
         <td th:text="${computerCase.description}" ></td>
         <td th:text="${computerCase.price}" ></td>
         <td>
-            Info
+            <a href="/parts/computerCaseInfo/" th:href="@{/parts/computerCaseInfo/__${computerCase.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/edit/" th:href="@{/parts/edit/__${computerCase.id}__}">Edit</a>

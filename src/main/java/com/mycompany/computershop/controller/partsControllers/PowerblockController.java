@@ -21,7 +21,7 @@ public class PowerblockController {
     public String getPowerBlocks(Model model){
         model.addAttribute("title", "Powerblocks");
         model.addAttribute("powerblocks", powerBlockService.findAll());
-        return "partsTemplates/powerblocks";
+        return "partsTemplates/powerblockTemplates/powerblocks";
     }
 
 
@@ -38,7 +38,7 @@ public class PowerblockController {
         model.addAttribute("title", "Edit Powerblock");
         model.addAttribute("powerBlock", powerBlockService.findById(id));
 
-        return "partsTemplates/editPowerblock";
+        return "partsTemplates/powerblockTemplates/editPowerblock";
     }
 
     @RequestMapping(value = "/editPowerblock", method = RequestMethod.POST)
@@ -51,7 +51,7 @@ public class PowerblockController {
     public String getAddNewPowerblock(Model model){
         model.addAttribute("title", "Add new Powerblock");
         model.addAttribute(new PowerBlock());
-        return "partsTemplates/addNewPowerblock";
+        return "partsTemplates/powerblockTemplates/addNewPowerblock";
     }
 
     @RequestMapping(value = "/addNewPowerblock", method = RequestMethod.POST)
@@ -59,5 +59,13 @@ public class PowerblockController {
         powerBlockService.save(powerBlock);
 
         return "redirect:/parts/powerblocks";
+    }
+
+    @RequestMapping(value = "/powerblockInfoPage/{id}", method = RequestMethod.GET)
+    public String getPowerblockInfoPage(Model model,
+                                         @PathVariable("id")int id){
+        model.addAttribute("title", "Powerblock info page");
+        model.addAttribute("powerblock", powerBlockService.findById(id));
+        return "partsTemplates/powerblockTemplates/powerblockInfoPage";
     }
 }

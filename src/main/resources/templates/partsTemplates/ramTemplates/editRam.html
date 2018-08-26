@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default title</h1>
+
+<form name="editRam" action="/parts/editRam" method="post" th:object="${ram}">
+    <p>Id</p>
+    <input title="Id" type="text" name="id" th:value="*{id}">
+    <p>Name</p>
+    <input title="Name" type="text" name="name" th:value="*{name}">
+    <p>Description</p>
+    <input title="Description" type="text" name="description" th:value="*{description}">
+    <div class="form-select-button">
+        <label th:for="type">Manufacturer</label>
+        <select name="manufacturer">
+            <option th:each="manufacturer : ${manufacturers}"
+                    th:text="${manufacturer.name}"
+                    th:value="${manufacturer.id}"></option>
+        </select>
+    </div>
+    <div class="form-select-button">
+        <label th:for="type">Memory size</label>
+        <select name="memorySizes">
+            <option th:each="memorySize : ${memorySizes}"
+                    th:text="${memorySize.size}"
+                    th:value="${memorySize.id}"></option>
+        </select>
+    </div>
+    <p>Frequency</p>
+    <input title="Price" type="text" name="frequency" th:value="*{frequency}">
+    <p>Price</p>
+    <input title="Price" type="text" name="price" th:value="*{price}">
+
+    <input type="submit" value="Edit">
+</form>
+
+</body>
+</html>

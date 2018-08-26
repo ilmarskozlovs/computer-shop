@@ -18,7 +18,7 @@
         <td th:text="${vga.description}" ></td>
         <td th:text="${vga.price}" ></td>
         <td>
-            Info
+            <a href="/parts/vgaInfoPage/" th:href="@{/parts/vgaInfoPage/__${vga.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/editVga/" th:href="@{/parts/editVga/__${vga.id}__}">Edit</a>

@@ -21,7 +21,7 @@ public class HddController {
     public String getHdd(Model model){
         model.addAttribute("title", "Hard disk drives");
         model.addAttribute("hdds", hddService.findAll());
-        return "partsTemplates/hdd";
+        return "partsTemplates/hddTemplates/hdd";
     }
 
 
@@ -38,7 +38,7 @@ public class HddController {
         model.addAttribute("title", "Edit Hdd");
         model.addAttribute("hdd", hddService.findById(id));
 
-        return "partsTemplates/editHdd";
+        return "partsTemplates/hddTemplates/editHdd";
     }
 
     @RequestMapping(value = "/editHdd", method = RequestMethod.POST)
@@ -51,7 +51,7 @@ public class HddController {
     public String getAddNewHdd(Model model){
         model.addAttribute("title", "Add new Hard disk drive");
         model.addAttribute(new Hdd());
-        return "partsTemplates/addNewHdd";
+        return "partsTemplates/hddTemplates/addNewHdd";
     }
 
     @RequestMapping(value = "/addNewHdd", method = RequestMethod.POST)
@@ -59,5 +59,13 @@ public class HddController {
         hddService.save(hdd);
 
         return "redirect:/parts/hdd";
+    }
+
+    @RequestMapping(value = "/hddInfoPage/{id}", method = RequestMethod.GET)
+    public String getHddInfoPage(Model model,
+                                 @PathVariable("id") int id){
+        model.addAttribute("title", "Hard disk drive info page");
+        model.addAttribute("hdd", hddService.findById(id));
+        return "partsTemplates/hddTemplates/hddInfoPage";
     }
 }

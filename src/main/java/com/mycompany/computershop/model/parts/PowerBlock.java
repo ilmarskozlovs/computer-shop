@@ -16,13 +16,25 @@ public class PowerBlock {
 
     private String description;
 
-    private int price;
+    private double price;
+
+    private int power;
+
+    private double diameter;
 
     @OneToMany
     @JoinColumn(name = "powerblock_id")
     private List<Computer> computers;
 
     public PowerBlock() {
+    }
+
+    public PowerBlock(String name, String description, double price, int power, double diameter) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.power = power;
+        this.diameter = diameter;
     }
 
     public int getId() {
@@ -49,11 +61,11 @@ public class PowerBlock {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,5 +75,21 @@ public class PowerBlock {
 
     public void setComputers(List<Computer> computers) {
         this.computers = computers;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public double getDiameter() {
+        return diameter;
+    }
+
+    public void setDiameter(double diameter) {
+        this.diameter = diameter;
     }
 }

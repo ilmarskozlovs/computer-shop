@@ -18,7 +18,7 @@
         <td th:text="${ram.description}" ></td>
         <td th:text="${ram.price}" ></td>
         <td>
-            Info
+            <a href="/parts/ramInfoPage/" th:href="@{/parts/ramInfoPage/__${ram.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/editRam/" th:href="@{/parts/editRam/__${ram.id}__}">Edit</a>

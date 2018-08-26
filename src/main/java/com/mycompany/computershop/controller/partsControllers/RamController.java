@@ -1,6 +1,8 @@
 package com.mycompany.computershop.controller.partsControllers;
 
 import com.mycompany.computershop.model.parts.Ram;
+import com.mycompany.computershop.services.ManufacturerService;
+import com.mycompany.computershop.services.partsServices.MemorySizeService;
 import com.mycompany.computershop.services.partsServices.RamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,17 @@ public class RamController {
     @Autowired
     private RamService ramService;
 
+    @Autowired
+    private MemorySizeService memorySizeService;
+
+    @Autowired
+    private ManufacturerService manufacturerService;
+
     @RequestMapping(value = "/ram")
     public String getRam(Model model){
         model.addAttribute("title", "Random Access Memory (RAM)");
         model.addAttribute("rams", ramService.findAll());
-        return "partsTemplates/ram";
+        return "partsTemplates/ramTemplates/ram";
     }
 
     @RequestMapping(value = "/removeRam/{id}", method = RequestMethod.GET)
@@ -35,8 +43,10 @@ public class RamController {
                                         @PathVariable("id") int id){
         model.addAttribute("title", "Edit Ram");
         model.addAttribute("ram", ramService.findById(id));
+        model.addAttribute("memorySizes", memorySizeService.findAll());
+        model.addAttribute("manufacturers", manufacturerService.findAll());
 
-        return "partsTemplates/editRam";
+        return "partsTemplates/ramTemplates/editRam";
     }
 
     @RequestMapping(value = "/editRam", method = RequestMethod.POST)
@@ -49,7 +59,9 @@ public class RamController {
     public String getAddNewRam(Model model){
         model.addAttribute("title", "Add new Ram");
         model.addAttribute(new Ram());
-        return "partsTemplates/addNewRam";
+        model.addAttribute("memorySizes", memorySizeService.findAll());
+        model.addAttribute("manufacturers", manufacturerService.findAll());
+        return "partsTemplates/ramTemplates/addNewRam";
     }
 
     @RequestMapping(value = "/addNewRam", method = RequestMethod.POST)
@@ -57,5 +69,14 @@ public class RamController {
         ramService.save(ram);
 
         return "redirect:/parts/ram";
+    }
+
+    @RequestMapping(value = "/ramInfoPage/{id}", method = RequestMethod.GET)
+    public String getRamInfoPage(Model model,
+                                 @PathVariable("id") int id){
+        model.addAttribute("title", "Random access memory");
+        model.addAttribute("ram", ramService.findById(id));
+        return "partsTemplates/ramTemplates/ramInfoPage";
+
     }
 }

@@ -18,7 +18,7 @@
         <td th:text="${monitor.description}" ></td>
         <td th:text="${monitor.price}" ></td>
         <td>
-            Info
+            <a href="/parts/monitorInfoPage" th:href="@{/parts/monitorInfoPage/__${monitor.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/editMonitor/" th:href="@{/parts/editMonitor/ __${monitor.id}__}">Edit</a>

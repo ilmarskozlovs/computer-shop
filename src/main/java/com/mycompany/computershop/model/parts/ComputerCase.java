@@ -16,13 +16,26 @@ public class ComputerCase {
 
     private String description;
 
-    private int price;
+    private double price;
+
+    @ManyToOne
+    private CaseType caseType;
+
+    private double weight;
 
     @OneToMany
-    @JoinColumn(name = "computer_case_id")
+    @JoinColumn
     private List<Computer> computers;
 
     public ComputerCase() {
+    }
+
+    public ComputerCase(String name, String description, double price, CaseType caseType, double weight) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.caseType = caseType;
+        this.weight = weight;
     }
 
     public int getId() {
@@ -49,12 +62,28 @@ public class ComputerCase {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public CaseType getCaseType() {
+        return caseType;
+    }
+
+    public void setCaseType(CaseType caseType) {
+        this.caseType = caseType;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public List<Computer> getComputers() {

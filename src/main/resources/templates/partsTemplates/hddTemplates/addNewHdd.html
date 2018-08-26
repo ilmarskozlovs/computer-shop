@@ -5,7 +5,7 @@
 
 <h1 th:text="${title}">Default title</h1>
 
-<form class="form-group" th:object="${monitor}" method="post" action="/parts/addNewMonitor">
+<form class="form-group" th:object="${hdd}" method="post" action="/parts/addNewHdd">
     <input type="hidden" th:field="*{id}">
     <label th:for="name">Name</label>
     <input type="text" th:field="*{name}">
@@ -13,8 +13,11 @@
     <input type="text" th:field="*{description}">
     <label th:for="price">Price</label>
     <input type="text" th:field="*{price}">
-    <input type="submit" value="Add monitor">
+    <label th:for="capacity">Capacity</label>
+    <input type="text" th:field="*{capacity}">
+    <input type="submit" value="Add Hard disk drive">
 
 </form>
+
 </body>
 </html>

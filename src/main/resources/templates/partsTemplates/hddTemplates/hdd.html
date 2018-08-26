@@ -18,7 +18,7 @@
         <td th:text="${hdd.description}" ></td>
         <td th:text="${hdd.price}" ></td>
         <td>
-            Info
+            <a href="/parts/hddInfoPage/" th:href="@{/parts/hddInfoPage/__${hdd.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/editHdd/" th:href="@{/parts/editHdd/__${hdd.id}__}">Edit</a>

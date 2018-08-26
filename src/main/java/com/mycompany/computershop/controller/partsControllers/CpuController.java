@@ -1,6 +1,7 @@
 package com.mycompany.computershop.controller.partsControllers;
 
 import com.mycompany.computershop.model.parts.Cpu;
+import com.mycompany.computershop.services.ManufacturerService;
 import com.mycompany.computershop.services.partsServices.CpuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,14 @@ public class CpuController {
     @Autowired
     private CpuService cpuService;
 
+    @Autowired
+    private ManufacturerService manufacturerService;
+
     @RequestMapping(value = "/cpu")
     public String getCpus(Model model){
         model.addAttribute("title", "Central processing units ");
         model.addAttribute("cpus", cpuService.findAll());
-        return "partsTemplates/cpu";
+        return "partsTemplates/cpuTemplates/cpu";
     }
 
     @RequestMapping(value = "/removeCpu/{id}", method = RequestMethod.GET)
@@ -36,8 +40,9 @@ public class CpuController {
                                           @PathVariable("id") int id){
         model.addAttribute("title", "Edit Cpu");
         model.addAttribute("cpu", cpuService.findById(id));
+        model.addAttribute("manufacturers", manufacturerService.findAll());
 
-        return "partsTemplates/editCpu";
+        return "partsTemplates/cpuTemplates/editCpu";
     }
 
     @RequestMapping(value = "/editCpu", method = RequestMethod.POST)
@@ -50,7 +55,8 @@ public class CpuController {
     public String getAddNewCpu(Model model){
         model.addAttribute("title", "Add new Central processor unit");
         model.addAttribute(new Cpu());
-        return "partsTemplates/addNewCpu";
+        model.addAttribute("manufacturers", manufacturerService.findAll());
+        return "partsTemplates/cpuTemplates/addNewCpu";
     }
 
     @RequestMapping(value = "/addNewCpu", method = RequestMethod.POST)
@@ -58,5 +64,13 @@ public class CpuController {
         cpuService.save(cpu);
 
         return "redirect:/parts/cpu";
+    }
+
+    @RequestMapping(value = "/cpuInfoPage/{id}", method = RequestMethod.GET)
+    public String getCpuInfoPage(Model model,
+                                 @PathVariable("id") int id){
+        model.addAttribute("title", "Central processor unit info page");
+        model.addAttribute("cpu", cpuService.findById(id));
+        return "partsTemplates/cpuTemplates/cpuInfoPage";
     }
 }

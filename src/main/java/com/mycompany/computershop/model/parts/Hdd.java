@@ -14,15 +14,24 @@ public class Hdd {
 
     private String name;
 
+    private double price;
+
     private String description;
 
-    private int price;
+    private int capacity;
 
     @OneToMany
     @JoinColumn(name = "hdd_id")
     private List<Computer> computers;
 
     public Hdd() {
+    }
+
+    public Hdd(String name, String description, double price, int capacity) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.capacity = capacity;
     }
 
     public int getId() {
@@ -49,11 +58,11 @@ public class Hdd {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,5 +72,13 @@ public class Hdd {
 
     public void setComputers(List<Computer> computers) {
         this.computers = computers;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

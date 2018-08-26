@@ -13,6 +13,16 @@
     <input type="text" th:field="*{description}">
     <label th:for="price">Price</label>
     <input type="text" th:field="*{price}">
+    <div class="form-select-button">
+        <label th:for="type">Manufacturer</label>
+        <select name="manufacturer">
+            <option th:each="manufacturer : ${manufacturers}"
+                    th:text="${manufacturer.name}"
+                    th:value="${manufacturer.id}"></option>
+        </select>
+    </div>
+    <label th:for="mainMemory">Main memory</label>
+    <input type="text" th:field="*{mainMemory}">
     <input type="submit" value="Add motherboard">
 
 </form>

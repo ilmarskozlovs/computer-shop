@@ -18,7 +18,7 @@
         <td th:text="${powerblock.description}" ></td>
         <td th:text="${powerblock.price}" ></td>
         <td>
-            Info
+            <a href="/parts/powerblockInfoPage/" th:href="@{/parts/powerblockInfoPage/__${powerblock.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/editPowerblock/" th:href="@{/parts/editPowerblock/__${powerblock.id}__}">Edit</a>

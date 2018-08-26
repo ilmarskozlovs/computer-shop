@@ -14,15 +14,31 @@ public class Cpu {
 
     private String name;
 
-    private String description;
+    @ManyToOne
+    private Manufacturer manufacturer;
 
-    private int price;
+    private double price;
+
+    private int frequency;
+
+    private int numberOfCores;
+
+    private String description;
 
     @OneToMany
     @JoinColumn(name = "cpu_id")
     private List<Computer> computers;
 
     public Cpu() {
+    }
+
+    public Cpu(String name, Manufacturer manufacturer, double price, int frequency, int numberOfCores, String description) {
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.frequency = frequency;
+        this.numberOfCores = numberOfCores;
+        this.description = description;
     }
 
     public int getId() {
@@ -49,11 +65,11 @@ public class Cpu {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,5 +79,29 @@ public class Cpu {
 
     public void setComputers(List<Computer> computers) {
         this.computers = computers;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
+    }
+
+    public int getNumberOfCores() {
+        return numberOfCores;
+    }
+
+    public void setNumberOfCores(int numberOfCores) {
+        this.numberOfCores = numberOfCores;
     }
 }

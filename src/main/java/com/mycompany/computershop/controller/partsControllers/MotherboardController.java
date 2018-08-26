@@ -1,6 +1,7 @@
 package com.mycompany.computershop.controller.partsControllers;
 
 import com.mycompany.computershop.model.parts.MotherBoard;
+import com.mycompany.computershop.services.ManufacturerService;
 import com.mycompany.computershop.services.partsServices.MotherBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,14 @@ public class MotherboardController {
     @Autowired
     private MotherBoardService motherBoardService;
 
+    @Autowired
+    private ManufacturerService manufacturerService;
+
     @RequestMapping(value = "/motherboards")
     public String getMotherboards(Model model){
         model.addAttribute("title", "Motherboards");
         model.addAttribute("motherboards", motherBoardService.findAll());
-        return "partsTemplates/motherboards";
+        return "partsTemplates/motherboardsTemplates/motherboards";
     }
 
     @RequestMapping(value = "/removeMotherboard/{id}", method = RequestMethod.GET)
@@ -36,8 +40,9 @@ public class MotherboardController {
                                      @PathVariable("id") int id){
         model.addAttribute("title", "Edit Motherboard");
         model.addAttribute("motherboard", motherBoardService.findById(id));
+        model.addAttribute("manufacturers", manufacturerService.findAll());
 
-        return "partsTemplates/editMotherboard";
+        return "partsTemplates/motherboardsTemplates/editMotherboard";
     }
 
     @RequestMapping(value = "/editMotherboard", method = RequestMethod.POST)
@@ -50,7 +55,8 @@ public class MotherboardController {
     public String getAddNewMotherboard(Model model){
         model.addAttribute("title", "Add new Motherboard");
         model.addAttribute(new MotherBoard());
-        return "partsTemplates/addNewMotherboard";
+        model.addAttribute("manufacturers", manufacturerService.findAll());
+        return "partsTemplates/motherboardsTemplates/addNewMotherboard";
     }
 
     @RequestMapping(value = "/addNewMotherboard", method = RequestMethod.POST)
@@ -58,6 +64,14 @@ public class MotherboardController {
         motherBoardService.save(motherBoard);
 
         return "redirect:/parts/motherboards";
+    }
+
+    @RequestMapping(value = "/motherboardInfoPage/{id}", method = RequestMethod.GET)
+    public String getMotherboardInfoPage(Model model,
+                                     @PathVariable("id")int id){
+        model.addAttribute("title", "Motherboard info page");
+        model.addAttribute("motherboard", motherBoardService.findById(id));
+        return "partsTemplates/motherboardsTemplates/motherboardInfoPage";
     }
 
 }

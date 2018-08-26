@@ -18,7 +18,7 @@
         <td th:text="${cpu.description}" ></td>
         <td th:text="${cpu.price}" ></td>
         <td>
-            Info
+            <a href="/parts/computerCaseInfo/" th:href="@{/parts/cpuInfoPage/__${cpu.id}__}">Info</a>
         </td>
         <td>
             <a href="/parts/editCpu/" th:href="@{/parts/editCpu/__${cpu.id}__}">Update</a>
